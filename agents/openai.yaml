@@ -1,4 +1,0 @@
-interface:
-  display_name: "QR Logo Export"
-  short_description: "拼接 UTM 并导出带 Logo 的 SVG、PNG 与链接文本"
-  default_prompt: "使用 $qr-logo-export 拼接我提供的网址和 UTM 参数，并生成带公司 Logo 的 SVG、PNG 与链接文本。"
