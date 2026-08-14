@@ -1,6 +1,6 @@
 ---
 name: qr-logo-export
-description: Export branded QR codes from one or many web links as matching SVG, PNG, and URL text files. Use when Codex is asked to convert links or a TXT/CSV URL list into QR codes, or to combine a website with utm_source and utm_medium before QR generation, with a replaceable company SVG logo, ordered filenames, manifests, and scan verification; also use for custom-logo QR batches, SanTu QR batches, UTM campaign links, regeneration, logo replacement, or delivery checks.
+description: Export branded QR codes from one or many web links as matching SVG, PNG, and URL text files. Use when Codex is asked to convert links or a TXT/CSV URL list into QR codes, combine a website with utm_source and utm_medium, set a custom QR color, or automatically match QR modules to the dominant company-logo color, with ordered filenames, manifests, and scan verification; also use for custom-logo QR batches, SanTu QR batches, UTM campaign links, regeneration, logo replacement, color changes, or delivery checks.
 ---
 
 # QR Logo Export
@@ -13,40 +13,56 @@ Generate a production batch with the bundled blue SanTu logo or a replacement co
 
 1. Preserve the user's link order. Do not rewrite, shorten, normalize, or follow redirects before encoding complete URLs.
 2. When the user supplies a website plus `utm_source` and `utm_medium`, build the complete URL first. Accept `utm_sourse`, `source`, and `sourse` as aliases for `utm_source`, add `https://` when the website has no scheme, URL-encode both values, preserve other query parameters, and replace existing `utm_source` / `utm_medium` values.
-3. Put supplied links in a UTF-8 TXT file with one link per line, or a CSV with `url` and optional `name` columns. For structured CSV input, accept `url`, `website`, or `网址` plus `utm_source` / `utm_sourse` / `source` / `sourse` and `utm_medium` / `medium`. Positional URLs are also accepted.
-4. Run the bundled generator:
+3. Resolve the QR module color. When the user supplies a hexadecimal color, pass it with `--qr-color`; otherwise omit the option so the generator extracts the dominant visible color from the selected logo. Never recolor the logo itself.
+4. Put supplied links in a UTF-8 TXT file with one link per line, or a CSV with `url` and optional `name` columns. For structured CSV input, accept `url`, `website`, or `网址` plus `utm_source` / `utm_sourse` / `source` / `sourse` and `utm_medium` / `medium`. Positional URLs are also accepted.
+5. Before first use, create the Skill-local Python environment and install its runtime dependencies. Use `requirements-dev.txt` only when maintaining or validating the Skill.
 
 ```bash
-python3 scripts/generate_qr_logo.py --input /absolute/path/links.txt --output /absolute/path/output
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+```
+
+Use `.venv/bin/python` for the bundled generator whenever the environment exists.
+6. Run the bundled generator:
+
+```bash
+.venv/bin/python scripts/generate_qr_logo.py --input /absolute/path/links.txt --output /absolute/path/output
 ```
 
 Use another company logo without changing the bundled default:
 
 ```bash
-python3 scripts/generate_qr_logo.py --logo /absolute/path/company-logo.svg \
+.venv/bin/python scripts/generate_qr_logo.py --logo /absolute/path/company-logo.svg \
   --input /absolute/path/links.txt --output /absolute/path/output
 ```
 
 For direct links:
 
 ```bash
-python3 scripts/generate_qr_logo.py --output /absolute/path/output \
+.venv/bin/python scripts/generate_qr_logo.py --output /absolute/path/output \
   'https://example.com/a' 'https://example.com/b'
 ```
 
 For a website plus UTM values:
 
 ```bash
-python3 scripts/generate_qr_logo.py --output /absolute/path/output \
-  --website 'www.fridayparts.com' --utm-source 'abc' --utm-medium '123'
+.venv/bin/python scripts/generate_qr_logo.py --output /absolute/path/output \
+  --website 'www.abc.com' --utm-source 'abc' --utm-medium '123'
 ```
 
-5. Treat a nonzero exit as an incomplete batch. Read `manifest.csv` or `manifest.json`, fix the cause, and rerun into a new or empty output directory.
-6. Report the completed URL, output directory, successful/failed counts, verification result, and all three formats. Show a representative PNG preview when useful.
+For an explicit QR color:
+
+```bash
+.venv/bin/python scripts/generate_qr_logo.py --qr-color '#000000' \
+  --output /absolute/path/output 'https://example.com'
+```
+
+7. Treat a nonzero exit as an incomplete batch. Read `manifest.csv` or `manifest.json`, fix the cause, and rerun into a new or empty output directory.
+8. Report the completed URL, resolved QR color and source, output directory, successful/failed counts, verification result, and all three formats. Show a representative PNG preview when useful.
 
 ## Visual Specification
 
-- QR modules: `#1A5FA9`
+- QR modules: explicit `--qr-color` value, otherwise the dominant visible logo color; the bundled SanTu logo resolves to `#1A5FA9`
 - Background and logo safety area: white
 - Center mark: bundled blue `assets/santu-logo.svg` by default, or the SVG supplied with `--logo`
 - Error correction: `H`
@@ -59,7 +75,9 @@ python3 scripts/generate_qr_logo.py --output /absolute/path/output \
 - Red rounded annotation boxes from reference screenshots are not part of the output
 - Center construction: remove QR modules inside the module-aligned safety area; never cover them with a white overlay rectangle
 
-Do not change the QR color, proportions, error correction, or quiet zone unless the user explicitly requests a new standard. Replace only the logo when requested. Use `--size` only to change PNG pixel dimensions; SVG remains resolution independent.
+Accept `#RGB` and `#RRGGBB` color values and normalize them to uppercase `#RRGGBB`. Keep SVG and PNG module colors identical. Record the resolved value in `manifest.json` as `qr_color`, with `qr_color_source` set to `explicit` or `logo-dominant`.
+
+Do not change the proportions, error correction, or quiet zone unless the user explicitly requests a new standard. Use `--size` only to change PNG pixel dimensions; SVG remains resolution independent.
 
 The module-aligned center cutout is a hard export rule. It prevents fractional seams or half-pixel frames when SVG files are viewed or rasterized at arbitrary scales. Keep QR modules on one crisp vector path and keep the selected logo as the only foreground content inside the cutout.
 
