@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+  <title id="title">QR Logo Export workflow</title>
+  <desc id="desc">Provide links or UTM fields, apply a company SVG logo, and export verified SVG, PNG, and URL text files.</desc>
+  <rect width="1200" height="300" rx="8" fill="#122033"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif">
+    <text x="56" y="58" fill="#8FA3BC" font-size="18" font-weight="700" letter-spacing="2">ONE REPEATABLE PIPELINE</text>
+    <g transform="translate(56 88)">
+      <text x="0" y="30" fill="#EA8C24" font-size="20" font-weight="800">01</text>
+      <text x="0" y="74" fill="#FFFFFF" font-size="30" font-weight="750">Build the URL</text>
+      <text x="0" y="112" fill="#AEBFD2" font-size="20">Paste links or add UTM fields.</text>
+      <rect x="0" y="142" width="270" height="40" rx="4" fill="#1D2D42"/>
+      <text x="16" y="168" fill="#DDE7F2" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="17">website + source + medium</text>
+    </g>
+    <path d="M356 176H422" stroke="#49627F" stroke-width="2"/>
+    <path d="M414 168L422 176L414 184" fill="none" stroke="#49627F" stroke-width="2"/>
+    <g transform="translate(454 88)">
+      <text x="0" y="30" fill="#EA8C24" font-size="20" font-weight="800">02</text>
+      <text x="0" y="74" fill="#FFFFFF" font-size="30" font-weight="750">Apply your logo</text>
+      <text x="0" y="112" fill="#AEBFD2" font-size="20">Use the default asset or --logo.</text>
+      <rect x="0" y="142" width="270" height="40" rx="4" fill="#1D2D42"/>
+      <text x="16" y="168" fill="#DDE7F2" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="17">assets/fp-logo.svg</text>
+    </g>
+    <path d="M754 176H820" stroke="#49627F" stroke-width="2"/>
+    <path d="M812 168L820 176L812 184" fill="none" stroke="#49627F" stroke-width="2"/>
+    <g transform="translate(852 88)">
+      <text x="0" y="30" fill="#EA8C24" font-size="20" font-weight="800">03</text>
+      <text x="0" y="74" fill="#FFFFFF" font-size="30" font-weight="750">Export + verify</text>
+      <text x="0" y="112" fill="#AEBFD2" font-size="20">Get matching SVG, PNG, TXT.</text>
+      <g transform="translate(0 142)" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="17" font-weight="700">
+        <rect width="92" height="40" rx="4" fill="#1A5FA9"/>
+        <text x="24" y="26" fill="#FFFFFF">SVG</text>
+        <rect x="102" width="92" height="40" rx="4" fill="#1A5FA9"/>
+        <text x="126" y="26" fill="#FFFFFF">PNG</text>
+        <rect x="204" width="92" height="40" rx="4" fill="#1A5FA9"/>
+        <text x="228" y="26" fill="#FFFFFF">TXT</text>
+      </g>
+    </g>
+  </g>
+</svg>
