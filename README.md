@@ -14,13 +14,15 @@
 
 把完整链接，或“网址 + UTM 参数”，批量转换为品牌二维码。每条链接同时导出真矢量 **SVG**、`1080 x 1080` **PNG** 和保存完整链接的 **TXT**，保留输入顺序，并生成逐张扫码验证结果。
 
-> 默认使用 FP Logo；替换一个 SVG 文件，即可生成你公司的版本。
+> 默认使用蓝色 SanTu Logo；替换一个 SVG 文件，即可生成你公司的版本。
 
 ## 实际输出
 
 <p align="center">
-  <img src="./assets/readme/example-fp-qr.png" width="420" alt="使用 FP 圆形 Logo 生成的真实二维码输出">
+  <img src="./assets/readme/example-santu-qr.png" width="420" alt="使用蓝色 SanTu Logo 为 xhslink.cn 短链接生成的真实二维码输出">
 </p>
+
+样张实际编码链接：[`https://xhslink.cn/m/1K6u87tKOIL`](https://xhslink.cn/m/1K6u87tKOIL)。该 PNG 已通过远程扫码验证，解码结果与短链接逐字一致。
 
 | 输出 | 规格 |
 | --- | --- |
@@ -134,7 +136,7 @@ python3 scripts/generate_qr_logo.py \
 1. 准备公司 Logo 的 SVG 文件。
 2. 将文字与描边转为轮廓，并展开群组和变换。
 3. 保留数字形式的 `viewBox`，只使用带填充色的 `<path>`。
-4. 用新文件覆盖 [`assets/fp-logo.svg`](./assets/fp-logo.svg)，文件名保持不变。
+4. 用新文件覆盖 [`assets/santu-logo.svg`](./assets/santu-logo.svg)，文件名保持不变。
 5. 先生成一张测试二维码，确认外观和扫码结果。
 
 ### 方式 B：单次使用其他 Logo
@@ -222,9 +224,11 @@ https://example.com/path,newsletter,email,email-campaign
 
 QR Logo Export converts complete URLs, or a website plus UTM values, into branded QR codes. Each link produces a true-vector **SVG**, a `1080 x 1080` **PNG**, and a matching **TXT** containing the complete encoded URL. It preserves input order and records per-file scan verification.
 
-> The bundled FP logo works out of the box. Replace one SVG asset to create your company's version.
+> The bundled blue SanTu logo works out of the box. Replace one SVG asset to create your company's version.
 
 ## Output
+
+The real QR example above encodes [`https://xhslink.cn/m/1K6u87tKOIL`](https://xhslink.cn/m/1K6u87tKOIL) and passed exact remote scan verification.
 
 | Output | Specification |
 | --- | --- |
@@ -317,7 +321,7 @@ For `utm_source`, the aliases `utm_sourse`, `source`, and `sourse` are accepted.
 1. Prepare the company logo as an SVG.
 2. Convert text and strokes to outlines, then expand groups and transforms.
 3. Keep a numeric `viewBox` and filled `<path>` elements only.
-4. Replace [`assets/fp-logo.svg`](./assets/fp-logo.svg) without changing the filename.
+4. Replace [`assets/santu-logo.svg`](./assets/santu-logo.svg) without changing the filename.
 5. Generate one test QR code and verify its appearance and scan result.
 
 ### Option B: select a logo for one run

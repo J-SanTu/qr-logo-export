@@ -1,13 +1,13 @@
 ---
 name: qr-logo-export
-description: Export branded QR codes from one or many web links as matching SVG, PNG, and URL text files. Use when Codex is asked to convert links or a TXT/CSV URL list into QR codes, or to combine a website with utm_source and utm_medium before QR generation, with a replaceable company SVG logo, ordered filenames, manifests, and scan verification; also use for custom-logo QR batches, FP QR batches, UTM campaign links, regeneration, logo replacement, or delivery checks.
+description: Export branded QR codes from one or many web links as matching SVG, PNG, and URL text files. Use when Codex is asked to convert links or a TXT/CSV URL list into QR codes, or to combine a website with utm_source and utm_medium before QR generation, with a replaceable company SVG logo, ordered filenames, manifests, and scan verification; also use for custom-logo QR batches, SanTu QR batches, UTM campaign links, regeneration, logo replacement, or delivery checks.
 ---
 
 # QR Logo Export
 
 [Design by SanTu](https://github.com/J-SanTu/qr-logo-export)
 
-Generate a production batch with the bundled FP logo or a replacement company SVG logo. Always deliver one true-vector SVG, one PNG, and one plain-text URL file for every input link.
+Generate a production batch with the bundled blue SanTu logo or a replacement company SVG logo. Always deliver one true-vector SVG, one PNG, and one plain-text URL file for every input link.
 
 ## Workflow
 
@@ -48,7 +48,7 @@ python3 scripts/generate_qr_logo.py --output /absolute/path/output \
 
 - QR modules: `#1A5FA9`
 - Background and logo safety area: white
-- Center mark: bundled `assets/fp-logo.svg` by default, or the SVG supplied with `--logo`
+- Center mark: bundled blue `assets/santu-logo.svg` by default, or the SVG supplied with `--logo`
 - Error correction: `H`
 - Quiet-zone border: 4 modules
 - Center white square: at least 156/540 of the QR canvas, expanded to the nearest centered odd-module boundary
@@ -66,7 +66,7 @@ The module-aligned center cutout is a hard export rule. It prevents fractional s
 ## Logo Replacement
 
 - Read [README.md](README.md) when installing, sharing, replacing the logo, or giving setup instructions to another user.
-- For a permanent replacement, overwrite `assets/fp-logo.svg` with the new SVG and keep that filename.
+- For a permanent replacement, overwrite `assets/santu-logo.svg` with the new SVG and keep that filename.
 - For a one-off replacement, pass `--logo /absolute/path/company-logo.svg`.
 - Require a transparent-background SVG with a numeric `viewBox` and visible shapes converted to absolute, filled `path` elements using only `M`, `L`, `H`, `V`, `C`, and `Z` commands.
 - Reject raster images, `<text>`, groups, transforms, strokes, clipping, masks, filters, CSS classes, and external resources. Ask the user to expand text/strokes and flatten transforms in their vector editor.

@@ -42,7 +42,7 @@ LOGO_MAX_SIZE = 126.442
 DEFAULT_SIZE = 1080
 USER_AGENT = "qr-logo-export/1.0"
 TLS_CONTEXT = ssl.create_default_context(cafile=certifi.where() if certifi else None)
-DEFAULT_LOGO = Path(__file__).resolve().parents[1] / "assets" / "fp-logo.svg"
+DEFAULT_LOGO = Path(__file__).resolve().parents[1] / "assets" / "santu-logo.svg"
 
 MODULE_RE = re.compile(
     r"M(?P<x1>-?[\d.]+),(?P<y1>-?[\d.]+)"
@@ -107,7 +107,7 @@ def parse_args() -> argparse.Namespace:
         "--logo",
         type=Path,
         default=DEFAULT_LOGO,
-        help="Path-only SVG logo (default: assets/fp-logo.svg)",
+        help="Path-only SVG logo (default: assets/santu-logo.svg)",
     )
     parser.add_argument("--size", type=int, default=DEFAULT_SIZE, help="PNG width/height")
     parser.add_argument("--skip-verify", action="store_true", help="Skip remote scan verification")
