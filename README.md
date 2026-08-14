@@ -22,8 +22,6 @@
   <img src="./assets/readme/example-santu-qr.png" width="420" alt="使用蓝色 SanTu Logo 为 xhslink.cn 短链接生成的真实二维码输出">
 </p>
 
-样张实际编码链接：[`https://xhslink.cn/m/1K6u87tKOIL`](https://xhslink.cn/m/1K6u87tKOIL)。该 PNG 已通过远程扫码验证，解码结果与短链接逐字一致。
-
 | 输出 | 规格 |
 | --- | --- |
 | SVG | 纯矢量路径，不嵌入位图，任意缩放 |
